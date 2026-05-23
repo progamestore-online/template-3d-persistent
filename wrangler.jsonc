@@ -4,15 +4,17 @@
   "main": "src/worker.ts",
   "compatibility_date": "2026-05-01",
 
-  "assets": {
-    "directory": "./web/dist",
-    "binding": "ASSETS",
-    "not_found_handling": "single-page-application"
-  },
+  // Multiplayer Worker only — serves /api/rooms/* for WebSocket DO.
+  // Static SPA is hosted on R2 via the shared host worker.
+  // Deploy: push to main triggers GitHub Actions → R2 + wrangler deploy.
 
   "durable_objects": {
     "bindings": [{ "name": "WORLD", "class_name": "WorldDO" }]
   },
 
-  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["WorldDO"] }]
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["WorldDO"] }],
+
+  "routes": [
+    { "pattern": "APPNAME.progamestore.online/api/*", "zone_name": "progamestore.online" }
+  ]
 }
