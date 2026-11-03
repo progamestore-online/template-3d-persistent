@@ -1,0 +1,13 @@
+
+
+/* Mobile app frame: keep browser zoom and page overflow out of app gestures. */
+@layer base {
+  html,
+  body,
+  #root {
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: clip;
+    touch-action: pan-x pan-y;
+  }
+}
