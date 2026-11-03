@@ -9,7 +9,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@progamestore/games": "^0.2.0",
+    "@progamestore/games": "^0.2.2",
     "react": "^19",
     "react-dom": "^19"
   },
